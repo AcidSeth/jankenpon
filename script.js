@@ -11,11 +11,15 @@ function computerPlay() {
             return "scissors";
         }
     }
-    //assign r p or s based on ranges
 
+    let playerScore = 0;
+    let computerScore = 0;
+    const computerSelection = computerPlay();
+    const playerSelection = userPrompt();
+    const playedHands = (playerSelection + " " + computerSelection);    
 
 function playRound(playerSelection, computerSelection) {
-    switch (playedHands) {
+    switch (playedHands.toLowerCase()) {
         case "rock scissors":
             return "You win! Rock smashes scissors.";
         case "paper rock":
@@ -29,9 +33,27 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const computerSelection = computerPlay();
-const playerSelection = "rock";
-const playedHands = (playerSelection + " " + computerSelection);
-// case insensitive version - const playerSelection = input.toLowerCase();;
+function scoreAdd() {
+    if (playRound() == "You lose!") {
+        computerScore++;
+    } else if (playRound() == "It's a tie!"){
+        return;
+    } else {
+        playerScore++;
+        return playerScore;
+    }
+}
 
-console.log(playRound(playerSelection, computerSelection));
+// play 5 rounds calling playRound, keep score and report winner/loser
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playRound(playerSelection, computerSelection);
+        scoreAdd();
+    } if (playerScore === 5) {
+        return `Congratulations! You won this match with ${playerScore} points.`;
+    } else if (computerScore === 5) {
+        return `Computer won this match with ${playerScore} points. Try again!`
+    }
+}
+
+console.log(game());
