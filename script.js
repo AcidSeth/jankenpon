@@ -15,11 +15,23 @@ function computerPlay() {
 
 
 function playRound(playerSelection, computerSelection) {
-    switch 
+    switch (playedHands) {
+        case "rock scissors":
+            return "You win! Rock smashes scissors.";
+        case "paper rock":
+            return "You win! Paper covers rock.";
+        case "scissors paper":
+            return "You win! Scissors cut paper.";
+        case ("rock rock" || "paper paper" || "scissors scissors"):
+            return "It's a tie!";
+        default:
+            return "You lose!";
+    }
 }
 
+const computerSelection = computerPlay();
 const playerSelection = "rock";
+const playedHands = (playerSelection + " " + computerSelection);
 // case insensitive version - const playerSelection = input.toLowerCase();;
-computerSelection = computerPlay();
 
 console.log(playRound(playerSelection, computerSelection));
