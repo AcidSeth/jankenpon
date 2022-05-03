@@ -17,6 +17,7 @@ function computerPlay() {
     }
 }
 
+//play a round, asking for prompt then compare to look for a tie, computer win or player win. increment score on win.
 function playRound(computerSelection) {
     let playerInput = prompt("Throw a hand!");
     let playerSelection = playerInput.toLowerCase();
